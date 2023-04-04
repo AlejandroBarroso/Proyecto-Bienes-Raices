@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         $propiedad->setImagen($nombreImagen);
     }
 
-        //Validar  
+    //Validar  
     $errores = $propiedad->validar();
 
     //Revisa si el array este vacio...

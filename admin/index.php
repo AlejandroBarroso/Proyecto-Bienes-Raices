@@ -8,7 +8,6 @@ use App\Propiedad;
 //Implementa  un metodo para obtener todas las propiedades usando ACTIVE REVORD
 $propiedades =  Propiedad::all();
 
-
 //Muestra mensaje condicional
 $resultado = $_GET['resultado'] ?? null;
 
@@ -21,9 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $propiedad = Propiedad::find($id);
 
         $propiedad->eliminar();
-                
+    
     }
 }
+
 //Incluye el template
 incluirTemplate('header');
 ?>
