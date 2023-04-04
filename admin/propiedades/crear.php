@@ -35,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         $image = Image::make($_FILES ['propiedad']['tmp_name']['imagen'])->fit(800, 600);
         $propiedad->setImagen($nombreImagen);
     }
-    //Validar  
+
+        //Validar  
     $errores = $propiedad->validar();
 
     //Revisa si el array este vacio...
@@ -49,13 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         $image->save(CARPETA_IMAGENES . $nombreImagen);
 
         // Guarda en la DB
-        $resultado = $propiedad->guardar();
-
-        // Rensaje de exito
-        if ($resultado) {
-            // Redireccionar al usuario para no duplicar entradas en la BD
-            header('Location:/admin?resultado=1');
-        }
+        $propiedad->guardar();
     }
 }
 

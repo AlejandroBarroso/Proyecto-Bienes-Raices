@@ -9,8 +9,6 @@ use App\Propiedad;
 $propiedades =  Propiedad::all();
 
 
-
-
 //Muestra mensaje condicional
 $resultado = $_GET['resultado'] ?? null;
 
@@ -19,16 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = filter_var($id, FILTER_VALIDATE_INT);
 
     if ($id) {
-        $query = "SELECT imagen FROM propiedades WHERE id = $id"; // Elimina l archivo
-        $resultado = mysqli_query($db, $query);
-        $propiedad = mysqli_fetch_assoc($resultado);
-        unlink('../imagenes/' . $propiedad['imagen']);
 
-        $query = "DELETE FROM propiedades WHERE id = $id"; //Elimina la propiedad
-        $resultado = mysqli_query($db, $query);
-        if ($resultado) {
-            header('location: /admin?resultado=3');
-        }
+        $propiedad = Propiedad::find($id);
+
+        $propiedad->eliminar();
+                
     }
 }
 //Incluye el template
