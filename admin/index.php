@@ -6,7 +6,6 @@ estaAutenticado();
 use App\Propiedad;
 use App\Vendedor;
 
-
 //Implementa  un metodo para obtener todas las propiedades usando ACTIVE REVORD
 $propiedades =  Propiedad::all();
 $vendedores = Vendedor::all(); 
@@ -17,13 +16,9 @@ $resultado = $_GET['resultado'] ?? null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
-
     if ($id) {
-
         $propiedad = Propiedad::find($id);
-
         $propiedad->eliminar();
-    
     }
 }
 
