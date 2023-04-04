@@ -3,10 +3,13 @@
 require '../includes/app.php'; //Importa las funciones y proteje la sesion
 estaAutenticado();
 
-use App\Propiedad; 
+use App\Propiedad;
+use App\Vendedor;
+
 
 //Implementa  un metodo para obtener todas las propiedades usando ACTIVE REVORD
 $propiedades =  Propiedad::all();
+$vendedores = Vendedor::all(); 
 
 //Muestra mensaje condicional
 $resultado = $_GET['resultado'] ?? null;
